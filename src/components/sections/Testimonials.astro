@@ -1,10 +1,25 @@
 ---
 import Sticker from '../ui/Sticker.astro';
 
-const placeholders = [
-  { rotate: -3 },
-  { rotate: 2 },
-  { rotate: -1.5 },
+const reviews = [
+  {
+    rotate: -3,
+    quote:
+      'Me explicaron cada paso y el polarizado quedó impecable. Buen trato, tiempo respetado y un acabado que se nota.',
+    author: 'CLIENTE DE POLARIZADO',
+  },
+  {
+    rotate: 2,
+    quote:
+      'El wrap quedó exactamente como lo imaginé. Trabajo limpio, materiales de calidad y cero sorpresas.',
+    author: 'CLIENTE DE FULL WRAP',
+  },
+  {
+    rotate: -1.5,
+    quote:
+      'Llevé mi moto por accesorios y estética. Quedó como nueva y el taller se siente de otro nivel.',
+    author: 'CLIENTE DE MOTO',
+  },
 ];
 ---
 
@@ -15,30 +30,34 @@ const placeholders = [
 >
   <div class="container">
     <div class="section-head neon-ignite" data-reveal>
-      <p class="eyebrow">VOCES // PENDIENTES</p>
+      <p class="eyebrow">VOCES // MUESTRA</p>
       <h2 id="testimonios-title">LO QUE DICE LA CALLE</h2>
       <p>
-        Cuando haya reseñas reales, van aquí. Mientras tanto, no inventamos
-        nombres ni estrellas.
+        Reseñas de muestra para mostrar el tono. Antes de publicar se sustituyen
+        por reseñas reales de clientes.
       </p>
     </div>
 
-    <!-- TODO: reemplazar con testimonios reales autorizados -->
+    <!-- TODO: reemplazar estas reseñas de muestra por reseñas reales autorizadas -->
     <ul class="testimonials__grid">
-      {placeholders.map((item) => (
+      {reviews.map((review) => (
         <li>
-          <Sticker rotate={item.rotate}>
-            <p class="testimonial__tag mono">RESEÑA // PENDIENTE</p>
+          <Sticker rotate={review.rotate}>
+            <p class="testimonial__tag mono">RESEÑA DE MUESTRA</p>
             <blockquote class="testimonial__quote">
-              Espacio reservado para una reseña real de un cliente.
+              {review.quote}
             </blockquote>
             <footer class="testimonial__author mono">
-              CLIENTE // PENDIENTE
+              {review.author} // EJEMPLO
             </footer>
           </Sticker>
         </li>
       ))}
     </ul>
+
+    <p class="testimonials__note mono">
+      EJEMPLOS DE DISEÑO // REEMPLAZAR CON RESEÑAS REALES ANTES DE PUBLICAR
+    </p>
   </div>
 </section>
 
@@ -68,6 +87,12 @@ const placeholders = [
     border-top: 1px dashed var(--line-strong);
     color: var(--text-dim);
     font-size: 0.6rem;
+  }
+
+  .testimonials__note {
+    margin-top: var(--space-8);
+    color: var(--neon-orange);
+    font-size: 0.62rem;
   }
 
   @media (max-width: 767px) {

@@ -65,27 +65,29 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 
 ## Datos de negocio
 
-Todos los datos viven en `src/data/business.ts`. Cada dato pendiente tiene su flag en `pending`. Mientras un flag sea `true`:
+Todos los datos viven en `src/data/business.ts`. WhatsApp, dirección y horario ya están cargados. Cada dato pendiente mantiene su flag en `pending`:
 
-- La UI muestra `[NÚMERO]`, `[DIRECCIÓN]`, `[HORARIO]`, `[@USUARIO]` o `[DOMINIO]` de forma visible.
-- No se genera sitemap ni canonical si el dominio está pendiente.
-- El build emite el warning `[mundo-biker] Dominio pendiente...`.
-- Los enlaces de WhatsApp apuntan a `#contacto` en lugar de inventar un número.
+- La UI muestra el nombre de las redes y marca los links como pendientes; el dominio y el correo siguen pendientes.
+- No se genera sitemap ni canonical si no hay URL de sitio resuelta.
+- El build emite un warning cuando falta `PUBLIC_SITE_URL` y no hay URL de Vercel.
+- Los enlaces de WhatsApp usan `https://wa.me/525663697644` con el mensaje codificado.
 
 ### Pendientes
 
-- WhatsApp, dirección, horario, Instagram, TikTok y dominio.
+- Links o handles de Instagram y TikTok.
+- Dominio definitivo y `PUBLIC_SITE_URL` de producción.
 - Fotos reales de galería.
-- Testimonios reales autorizados.
+- Reseñas reales autorizadas (las actuales son ejemplos marcados).
 - Mecanismo definitivo del formulario (backend propio o servicio externo).
 - Mapa interactivo (iframe) si se decide sustituir el mapa estático.
 - Analytics y medición de conversiones.
-- Destino de despliegue y cabeceras.
+- Actualizar Node y Astro para cerrar los advisories de `npm audit`.
 
 ## Decisiones de la versión 1
 
 - **Alcance:** esta versión omite el configurador de wrap, el comparador antes/después, la silueta de auto del hero y el sonido opcional.
-- **Formulario:** valida en cliente y hace handoff a WhatsApp con el mensaje compuesto. No envía datos a terceros.
+- **Formulario:** valida en cliente y abre WhatsApp en una pestaña nueva con el mensaje compuesto. No envía datos a terceros.
+- **Reseñas:** las tarjetas actuales son ejemplos de diseño, marcados como muestra; se sustituyen por reseñas reales antes de publicar.
 - **Mapa:** SVG estático con enlace a indicaciones de Google Maps. Sin iframes ni cookies de terceros.
 - **Fuentes:** cuatro familias autoalojadas con subset latino y pesos mínimos.
 - **Efectos:** CSS con `transform`/`opacity`; `IntersectionObserver` pausa animaciones fuera de pantalla.
@@ -118,7 +120,7 @@ Comprobaciones realizadas con Playwright:
 - Sin scroll horizontal en 360, 390, 768, 1024 y 1440 px.
 - Un solo `h1`.
 - Lightbox con `Esc` y foco restaurado.
-- Menú móvil con `Esc`, formulario vacío con foco en el primer error y envío válido con handoff.
+- Menú móvil con `Esc`, formulario vacío con foco en el primer error y envío válido abriendo WhatsApp con el mensaje compuesto.
 - Konami y cinco clics del logo alternan el modo apagón.
 - Reduced motion sin lluvia, marquesina ni cursor.
 - Sin errores de consola.

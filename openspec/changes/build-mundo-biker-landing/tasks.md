@@ -34,7 +34,7 @@
 - [x] 4.3 Crear la banda marquesina con el texto exacto del brief entre hero y servicios; verificar que con reduced motion queda estática y visible.
 - [x] 4.4 Implementar la línea de tiempo del proceso con Cotiza, Diseño, Instalación y Entrega; verificar el orden y que la secuencia se desactiva con reduced motion.
 - [x] 4.5 Implementar la galería como mosaico de placeholders etiquetados; verificar que cada ítem tiene nombre accesible y que no se presenta como trabajo real.
-- [x] 4.6 Implementar los testimonios como stickers placeholder marcados; verificar que no hay nombres, citas ni valoraciones inventadas.
+- [x] 4.6 Implementar reseñas de muestra en stickers marcados como ejemplos; verificar que no se presentan como reseñas reales.
 - [x] 4.7 Implementar la sección de contacto con los cuatro campos, ubicación, horario, redes y acceso flotante a WhatsApp; verificar labels reales y placeholders visibles.
 - [x] 4.8 Implementar el footer con firma de grafiti, créditos y redes; verificar que todos los trazos son originales.
 

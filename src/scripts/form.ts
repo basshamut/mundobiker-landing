@@ -136,6 +136,12 @@ if (form) {
       status.textContent = 'Abriendo WhatsApp con tu solicitud...';
     }
 
-    window.location.assign(href);
+    const whatsappWindow = window.open(href, '_blank');
+
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+    } else {
+      window.location.assign(href);
+    }
   });
 }

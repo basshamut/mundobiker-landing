@@ -56,14 +56,14 @@ The gallery SHALL present a mosaic of labeled image placeholders until real phot
 - **WHEN** real gallery photos are unavailable
 - **THEN** the gallery shows visibly marked placeholders, not stock or fabricated work
 
-### Requirement: Testimonials placeholders
+### Requirement: Honest testimonials
 
-Testimonials SHALL be marked as placeholders until real quotes exist. The page MUST NOT publish invented names, quotes or ratings.
+Testimonials SHALL be real and attributable, or visibly marked as sample copy. The page MUST NOT present invented names, quotes or ratings as real customer reviews.
 
-#### Scenario: Placeholder testimonials
+#### Scenario: Sample testimonials
 
 - **WHEN** real testimonials are unavailable
-- **THEN** the section either shows clearly marked placeholders or is omitted
+- **THEN** the section shows sample reviews visibly labeled as examples, or is omitted
 
 ### Requirement: Contact section structure
 

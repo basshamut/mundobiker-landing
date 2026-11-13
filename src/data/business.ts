@@ -12,8 +12,15 @@ export type BusinessData = {
   name: string;
   city: string;
   whatsapp: string;
+  whatsappDisplay: string;
   address: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  addressCountry: string;
   hours: string;
+  hoursSchema: string;
+  socialName: string;
   instagram: string;
   tiktok: string;
   domain: string;
@@ -24,17 +31,25 @@ export type BusinessData = {
 export const business: BusinessData = {
   name: 'Mundo Biker',
   city: 'CDMX',
-  whatsapp: '[NÚMERO]',
-  address: '[DIRECCIÓN]',
-  hours: '[HORARIO]',
+  whatsapp: '525663697644',
+  whatsappDisplay: '+52 56 6369 7644',
+  address:
+    'Norte 92, local #5430, Col. Gertrudis Sánchez, Gustavo A. Madero, CDMX',
+  streetAddress: 'Norte 92, local #5430, Col. Gertrudis Sánchez',
+  addressLocality: 'Gustavo A. Madero',
+  addressRegion: 'CDMX',
+  addressCountry: 'MX',
+  hours: 'Lunes a domingo, 10:00 a 19:00',
+  hoursSchema: 'Mo-Su 10:00-19:00',
+  socialName: 'EL MUNDO DEL BIKER',
   instagram: '[@USUARIO]',
   tiktok: '[@USUARIO]',
   domain: '[DOMINIO]',
   email: '[CORREO]',
   pending: {
-    whatsapp: true,
-    address: true,
-    hours: true,
+    whatsapp: false,
+    address: false,
+    hours: false,
     instagram: true,
     tiktok: true,
     domain: true,
@@ -63,9 +78,13 @@ export function directionsHref(): string {
 }
 
 export function instagramHref(): string | undefined {
-  return business.pending.instagram ? undefined : `https://instagram.com/${business.instagram.replace('@', '')}`;
+  return business.pending.instagram
+    ? undefined
+    : `https://instagram.com/${business.instagram.replace('@', '')}`;
 }
 
 export function tiktokHref(): string | undefined {
-  return business.pending.tiktok ? undefined : `https://tiktok.com/@${business.tiktok.replace('@', '')}`;
+  return business.pending.tiktok
+    ? undefined
+    : `https://tiktok.com/@${business.tiktok.replace('@', '')}`;
 }

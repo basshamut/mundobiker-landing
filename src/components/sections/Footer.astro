@@ -1,6 +1,6 @@
 ---
 import GraffitiMark from '../svg/GraffitiMark.astro';
-import { instagramHref, tiktokHref } from '../../data/business';
+import { business, instagramHref, tiktokHref } from '../../data/business';
 
 const instagram = instagramHref();
 const tiktok = tiktokHref();
@@ -25,15 +25,16 @@ const year = new Date().getFullYear();
 
     <div class="footer__links">
       <div class="footer__social">
+        <span class="footer__social-name">{business.socialName}</span>
         {instagram ? (
           <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
         ) : (
-          <span>Instagram [@USUARIO]</span>
+          <span>Instagram // LINK PENDIENTE</span>
         )}
         {tiktok ? (
           <a href={tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
         ) : (
-          <span>TikTok [@USUARIO]</span>
+          <span>TikTok // LINK PENDIENTE</span>
         )}
       </div>
 
@@ -110,6 +111,13 @@ const year = new Date().getFullYear();
 
   .footer__social a {
     color: var(--neon-cyan);
+  }
+
+  .footer__social-name {
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
   }
 
   .footer__top {

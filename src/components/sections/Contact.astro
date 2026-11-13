@@ -97,7 +97,7 @@ const quoteHref = whatsappHref('Hola Mundo Biker, quiero cotizar un servicio.');
               [NÚMERO] <span class="mono">PENDIENTE</span>
             </p>
           ) : (
-            <a class="info-block__value" href={quoteHref}>{business.whatsapp}</a>
+            <a class="info-block__value" href={quoteHref}>{business.whatsappDisplay}</a>
           )}
         </div>
 
@@ -122,16 +122,17 @@ const quoteHref = whatsappHref('Hola Mundo Biker, quiero cotizar un servicio.');
 
         <div class="info-block">
           <p class="info-block__label mono">REDES</p>
+          <p class="info-block__value">{business.socialName}</p>
           <div class="info-block__social">
             {instagram ? (
               <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
             ) : (
-              <span>Instagram [@USUARIO] <span class="mono">PENDIENTE</span></span>
+              <span>Instagram <span class="mono">LINK PENDIENTE</span></span>
             )}
             {tiktok ? (
               <a href={tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
             ) : (
-              <span>TikTok [@USUARIO] <span class="mono">PENDIENTE</span></span>
+              <span>TikTok <span class="mono">LINK PENDIENTE</span></span>
             )}
           </div>
         </div>

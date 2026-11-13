@@ -158,7 +158,7 @@ La mayoría del tráfico es **móvil**. Diseña mobile-first.
 - Todo en **español**, tono callejero, directo y con actitud. Frases cortas, llamadas a la acción claras.
 - No inventes datos del negocio (precios, direcciones, números, testimonios, años de experiencia). Usa `[PLACEHOLDER]` visible y avísame.
 - Los datos reales viven **solo** en `src/data/business.ts`. Nunca los copies en varios archivos.
-- Testimonios y fotos de galería son placeholders hasta que haya material real. Márcalos con comentario `<!-- TODO: reemplazar -->`.
+- Las reseñas de muestra deben estar marcadas como ejemplos y no se presentan como reseñas reales. Fotos de galería y reseñas reales se marcan con `<!-- TODO: reemplazar -->`.
 - Sin marcas registradas, personajes ni logos de terceros en grafitis o stickers. Todo original.
 
 ## 11. Skills y guías externas (opcionales)
@@ -232,7 +232,7 @@ Una tarea está terminada cuando:
 - [ ] Respeta `prefers-reduced-motion` y tiene foco visible.
 - [ ] No añade JS innecesario ni rompe los objetivos de Lighthouse.
 - [ ] Usa tokens de `tokens.css` y datos de `src/data/`, sin valores hardcodeados.
-- [ ] Textos en español, sin datos inventados, placeholders marcados.
+- [ ] Textos en español, sin datos inventados, placeholders y reseñas de muestra marcados.
 - [ ] Cada una de las 8 secciones vigentes y los 8 servicios del brief tiene equivalente en la landing.
 - [ ] Resumen final con lo hecho, lo pendiente y cualquier decisión tomada.
 
@@ -242,10 +242,10 @@ Estos valores van **solo** en `src/data/business.ts`:
 
 - Nombre: **Mundo Biker**
 - Ciudad: **CDMX** (Ciudad de México)
-- WhatsApp: `[NÚMERO]` (formato internacional, sin `+` ni espacios)
-- Dirección: `[DIRECCIÓN]`
-- Horario: `[HORARIO]`
-- Instagram / TikTok: `[@USUARIO]`
+- WhatsApp: `525663697644` (formato internacional, sin `+` ni espacios); display `+52 56 6369 7644`
+- Dirección: `Norte 92, local #5430, Col. Gertrudis Sánchez, Gustavo A. Madero, CDMX`
+- Horario: `Lunes a domingo, 10:00 a 19:00`
+- Instagram / TikTok: `EL MUNDO DEL BIKER` (links pendientes)
 - Dominio: `[DOMINIO]`
 
 ### Decisiones pendientes
@@ -254,7 +254,8 @@ No las inventes. Pregunta antes de implementarlas:
 
 - Mecanismo de envío del formulario de contacto (WhatsApp prellenado, `mailto:` o servicio externo).
 - Mapa de ubicación (iframe de terceros vs. mapa SVG estático con enlace).
-- Fotos reales de galería; testimonios reales.
+- Fotos reales de galería; reseñas reales (las actuales son ejemplos marcados).
+- Links o handles de Instagram y TikTok.
 - Analytics y medición de conversiones.
 - Dominio canónico definitivo y `PUBLIC_SITE_URL` de producción.
 - Actualizar Node a >= 22.23.4 y Astro a 7.4.12 para cerrar los advisories de `npm audit`.

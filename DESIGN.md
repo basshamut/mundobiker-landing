@@ -397,6 +397,7 @@ Además:
 - [ ] Cada servicio tiene su color, icono y glow.
 - [ ] El color del servicio se usa solo en icono, borde y glow; el texto va en `--text`.
 - [ ] La landing cubre las 8 secciones vigentes (sin configurador ni comparador antes/después) y los 8 servicios de `MUNDOBIKER.md`.
+- [ ] Las reseñas de muestra están marcadas como ejemplos y no se presentan como reseñas reales.
 - [ ] El texto largo es legible (contraste, ancho de línea, fondo sólido).
 - [ ] Los efectos se reducen en móvil y se apagan con `prefers-reduced-motion`.
 - [ ] Ningún parpadeo supera 3 por segundo.
