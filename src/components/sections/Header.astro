@@ -14,7 +14,10 @@ const links = [
 <header class="header">
   <div class="container header__inner">
     <a class="logo" href="#inicio" data-logo>
-      <span class="logo__mark" aria-hidden="true">MB</span>
+      <picture class="logo__picture">
+        <source srcset="/logo.webp" type="image/webp" />
+        <img src="/logo.png" alt="" width="400" height="427" class="logo__img" />
+      </picture>
       <span class="logo__text">MUNDO<span>BIKER</span></span>
     </a>
 
@@ -131,18 +134,18 @@ const links = [
     flex-shrink: 0;
   }
 
-  .logo__mark {
-    display: grid;
-    place-items: center;
-    width: 2.4rem;
-    height: 2.4rem;
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    font-family: var(--font-display);
-    font-size: 0.9rem;
-    font-weight: 900;
-    box-shadow: var(--glow-box-cyan);
-    clip-path: var(--clip-corner-sm);
+  .logo__picture {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .logo__img {
+    display: block;
+    width: auto;
+    height: 2.9rem;
+    filter: drop-shadow(
+      0 0 8px color-mix(in srgb, var(--neon-cyan) 35%, transparent)
+    );
   }
 
   .logo__text {
@@ -275,6 +278,12 @@ const links = [
 
     .header__cta-wrap {
       display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .logo__img {
+      height: 2.4rem;
     }
   }
 

@@ -27,6 +27,6 @@ if (loader) {
     finish();
   } else {
     document.documentElement.classList.add('no-scroll');
-    window.setTimeout(finish, 1600);
+    window.setTimeout(finish, 6600);
   }
 }

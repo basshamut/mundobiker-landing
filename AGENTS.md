@@ -54,6 +54,8 @@ Antes de dar una tarea por terminada: `npx astro check` y `npm run build` deben 
 ├── .nvmrc                   # Node 22
 ├── public/
 │   ├── favicon.svg
+│   ├── logo.webp             # logo transparente (principal)
+│   ├── logo.png              # fallback del logo
 │   ├── og-image.jpg
 │   └── fonts/               # fuentes autoalojadas (.woff2)
 └── src/
@@ -115,7 +117,7 @@ El brief define 10 secciones; esta versión omite el configurador de wrap y el c
 
 **Anclas:** el header enlaza a cada sección. Usa `scroll-margin-top` igual a la altura del header para que el destino no quede tapado.
 
-**Extras:** loader tipo terminal (máx. 2 s, omitible), cursor personalizado (solo con puntero fino), easter egg "modo apagón" (código Konami o 5 clics en el logo).
+**Extras:** loader tipo terminal (~6.6 s, omitible, logo de fondo), cursor personalizado (solo con puntero fino), easter egg "modo apagón" (código Konami o 5 clics en el logo).
 
 ## 7. Reglas de rendimiento (innegociables)
 
@@ -268,5 +270,6 @@ El brief sigue siendo la referencia de intención. Para esta versión se decidi�
 - El comparador antes/después.
 - La silueta de auto en el hero.
 - El sonido opcional y su control.
+- El loader se extendió a ~6.6 s y usa el logo de fondo por decisión del cliente; sigue siendo omitible.
 
 Estas omisiones deben revisarse antes de ampliar el alcance. La landing entrega 8 secciones y mantiene los 8 servicios del brief.

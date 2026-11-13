@@ -122,7 +122,7 @@ El cursor personalizado se dibuja con un elemento posicionado y `transform`, sol
 
 ### D14. Loader fail-open
 
-El overlay del loader está oculto por defecto y solo se muestra si el JS añade una clase al inicio; se retira por tiempo máximo y por botón de omisión. Si el JS falla o está desactivado, el contenido es visible.
+El overlay del loader está oculto por defecto y solo se muestra si el JS añade una clase al inicio; se retira a los ~6.6 s, por botón de omisión o con `Esc`, y usa el logo como watermark de fondo. Si el JS falla o está desactivado, el contenido es visible.
 
 - **Alternativa:** overlay visible por defecto que el JS retira. Se descarta: si el JS falla, la página queda bloqueada.
 - **Consecuencia:** el loader nunca es un requisito para ver el contenido.

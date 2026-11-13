@@ -299,6 +299,10 @@ Todos son CSS salvo que se indique. Animar solo `transform` y `opacity` siempre 
 **NeonSign (letrero)**
 - Texto o forma con glow en 3 a 4 capas, flicker opcional, soporte para "tubo apagado" parcial.
 
+**Logo**
+- Emblema transparente, sin fondo de ladrillo ni marco neón, en `public/logo.webp` con fallback `public/logo.png`.
+- Header: emblema + wordmark `MUNDO BIKER`. Footer: emblema completo.
+
 **ServiceCard**
 - Fondo `--bg-raised`, borde y glow en el color del servicio, icono SVG propio, título, descripción corta (máx. 2 líneas).
 - Tilt 3D y borde animado en puntero fino. En táctil: efecto estático.
@@ -325,7 +329,7 @@ Todos son CSS salvo que se indique. Animar solo `transform` y `opacity` siempre 
 - Mosaico irregular tipo muro de grafitis. Lightbox con `Esc`, flechas y foco atrapado.
 
 **Loader**
-- Terminal en mono: `INICIALIZANDO SISTEMA...`. Máximo 2 s, omitible y con salida garantizada: no depende de `animationend` ni bloquea el contenido si el JS falla o está desactivado.
+- Terminal en mono: `INICIALIZANDO SISTEMA...`. Duración ~6.6 s (decisión de esta versión), omitible, con el logo como watermark de fondo y salida garantizada: no depende de `animationend` ni bloquea el contenido si el JS falla o está desactivado.
 
 ## 8. Layout y responsive
 

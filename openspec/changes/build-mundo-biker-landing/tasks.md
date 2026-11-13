@@ -49,7 +49,7 @@
 
 - [x] 6.1 Implementar `reveal.ts` con `IntersectionObserver` para encendido de neón y pausa de animaciones fuera de pantalla; verificar que al salir del viewport la animación se pausa.
 - [x] 6.2 Implementar `cursor.ts` aditivo, solo `(pointer: fine)` y desactivado con reduced motion; verificar que el cursor nativo sigue visible.
-- [x] 6.3 Implementar `loader.ts` con overlay oculto por defecto, máximo 2 s, botón de omisión y fail-open; verificar con JS desactivado y con reduced motion.
+- [x] 6.3 Implementar `loader.ts` con overlay oculto por defecto, ~6.6 s, logo de fondo, botón de omisión y fail-open; verificar con JS desactivado y con reduced motion.
 - [x] 6.4 Implementar `konami.ts` con secuencia Konami y cinco clics en el logo para alternar modo apagón; verificar ambos disparadores y que se puede desactivar.
 - [x] 6.5 Verificar el límite de 3 parpadeos por segundo en los keyframes de flicker; documentar la medición en el README.
 

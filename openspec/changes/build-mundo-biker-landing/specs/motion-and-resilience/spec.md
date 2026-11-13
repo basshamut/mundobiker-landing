@@ -53,7 +53,7 @@ Infinite animations SHALL pause when their element leaves the viewport.
 
 ### Requirement: Non-blocking loader
 
-The terminal loader SHALL last at most two seconds, be skippable, and MUST NOT hide content when JavaScript fails or is disabled.
+The terminal loader SHALL be skippable and MUST NOT hide content when JavaScript fails or is disabled. Its duration is configurable and currently about 6.6 seconds, with the brand logo as a background watermark.
 
 #### Scenario: Loader failure
 

@@ -42,6 +42,11 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 - La imagen y la URL usan `PUBLIC_SITE_URL` o, en Vercel, `VERCEL_PROJECT_PRODUCTION_URL`.
 - Después de desplegar, valida con Meta Sharing Debugger, LinkedIn Post Inspector o X Card Validator. Las redes cachean: fuerza el re-scrape si cambias dominio o imagen.
 
+## Marca
+
+- `public/logo.webp` es el logo principal con fondo transparente; `public/logo.png` es el fallback para navegadores sin WebP.
+- El header usa el emblema + wordmark y el footer el emblema completo.
+
 ## Estructura
 
 ```
@@ -56,6 +61,8 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 ├── .nvmrc                   # Node 22
 ├── public/
 │   ├── favicon.svg
+│   ├── logo.webp             # logo transparente (principal)
+│   ├── logo.png              # fallback del logo
 │   ├── og-image.jpg
 │   └── fonts/               # Orbitron, Chakra Petch, Space Mono, Permanent Marker
 └── src/
@@ -104,7 +111,7 @@ Todos los datos viven en `src/data/business.ts`. WhatsApp, dirección y horario 
 
 - `prefers-reduced-motion` desactiva glitch, flicker, lluvia, parallax, marquesina en movimiento, loader y cursor personalizado.
 - El cursor personalizado solo aparece con puntero fino y nunca reemplaza al nativo.
-- El loader es fail-open: si el JS falla, el CSS lo oculta a los 2.2 s; si el JS está desactivado, nunca se muestra.
+- El loader es fail-open: si el JS falla, el CSS lo oculta a los 7.2 s; si el JS está desactivado, nunca se muestra. Dura ~6.6 s, muestra el logo de fondo y se puede omitir con el botón o `Esc`.
 - Foco visible en todos los controles; lightbox y menú son operables con teclado.
 - Sin JavaScript, el contenido sigue visible y una barra de navegación alternativa enlaza las secciones.
 

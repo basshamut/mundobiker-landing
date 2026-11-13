@@ -1,5 +1,4 @@
 ---
-import GraffitiMark from '../svg/GraffitiMark.astro';
 import { business, instagramHref, tiktokHref } from '../../data/business';
 
 const instagram = instagramHref();
@@ -10,7 +9,16 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <GraffitiMark />
+      <picture class="footer__logo">
+        <source srcset="/logo.webp" type="image/webp" />
+        <img
+          src="/logo.png"
+          alt="EL MUNDO DEL BIKER"
+          width="400"
+          height="427"
+          loading="lazy"
+        />
+      </picture>
       <p class="footer__tagline mono">
         POLARIZADO // WRAP // LUCES // SONIDO // ESTÉTICA
       </p>
@@ -19,7 +27,7 @@ const year = new Date().getFullYear();
     <div class="footer__meta">
       <p class="mono">CDMX // TALLER DE ESTÉTICA AUTOMOTRIZ</p>
       <p class="mono footer__pending">
-        SITIO EN CONSTRUCCIÓN: DATOS Y FOTOS REALES PENDIENTES
+        SITIO EN CONSTRUCCIÓN: FOTOS Y REDES PENDIENTES
       </p>
     </div>
 
@@ -67,6 +75,19 @@ const year = new Date().getFullYear();
     display: grid;
     gap: var(--space-2);
     align-content: start;
+  }
+
+  .footer__logo {
+    display: block;
+  }
+
+  .footer__logo img {
+    display: block;
+    width: auto;
+    height: clamp(4.5rem, 9vw, 6.5rem);
+    filter: drop-shadow(
+      0 0 10px color-mix(in srgb, var(--neon-cyan) 28%, transparent)
+    );
   }
 
   .footer__tagline {

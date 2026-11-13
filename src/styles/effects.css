@@ -329,18 +329,29 @@ html.blackout .section-head h2 {
   display: none;
   place-items: center;
   padding: var(--space-6);
+  overflow: hidden;
   background:
     radial-gradient(
-      circle at 50% 45%,
-      color-mix(in srgb, var(--neon-violet) 14%, transparent),
-      transparent 55%
+      circle at 50% 42%,
+      color-mix(in srgb, var(--neon-violet) 18%, transparent),
+      transparent 58%
     ),
     var(--bg);
 }
 
+.loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/logo.webp') center / min(78vw, 30rem) no-repeat;
+  opacity: 0.22;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
 .js .loader {
   display: grid;
-  animation: loader-auto-hide var(--dur-base) var(--ease-snap) 2.2s forwards;
+  animation: loader-auto-hide var(--dur-base) var(--ease-snap) 7.2s forwards;
 }
 
 .loader.is-done {
@@ -358,6 +369,8 @@ html.blackout .section-head h2 {
 }
 
 .loader__scene {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: var(--space-3);
   width: min(100%, 34rem);
@@ -374,6 +387,9 @@ html.blackout .section-head h2 {
   margin: 0;
   color: var(--neon-cyan);
   font-size: 0.74rem;
+  text-shadow:
+    0 0 10px var(--bg),
+    0 0 24px var(--bg);
 }
 
 .loader__prompt {
@@ -405,7 +421,7 @@ html.blackout .section-head h2 {
   transform-origin: left;
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
   box-shadow: 0 0 12px var(--neon-magenta);
-  animation: loader-fill 1.35s var(--ease-snap) forwards;
+  animation: loader-fill 6.2s var(--ease-snap) forwards;
 }
 
 .loader__meta {
@@ -416,6 +432,9 @@ html.blackout .section-head h2 {
   margin: 0;
   color: var(--text-dim);
   font-size: 0.55rem;
+  text-shadow:
+    0 0 8px var(--bg),
+    0 0 18px var(--bg);
 }
 
 .loader__sequence {
