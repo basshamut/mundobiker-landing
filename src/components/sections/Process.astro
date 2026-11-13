@@ -156,13 +156,13 @@ const steps = [
     .process__list {
       grid-template-columns: 1fr;
       gap: var(--space-6);
-      padding-left: 1.6rem;
+      padding-left: 0;
     }
 
     .process__list::before {
       top: 0;
       bottom: 0;
-      left: 1.35rem;
+      left: 1.4rem;
       width: 1px;
       height: auto;
       background: linear-gradient(
@@ -175,10 +175,25 @@ const steps = [
       );
     }
 
+    .process__item {
+      display: grid;
+      grid-template-columns: 2.8rem minmax(0, 1fr);
+      column-gap: var(--space-3);
+      row-gap: var(--space-1);
+      padding-left: 0;
+    }
+
     .process__node {
-      position: absolute;
-      top: 0;
-      left: -1.6rem;
+      position: relative;
+      top: auto;
+      left: auto;
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+
+    .process__item h3,
+    .process__item p {
+      grid-column: 2;
     }
 
     .process__item h3 {

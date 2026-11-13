@@ -2,12 +2,18 @@
 ---
 
 <div class="loader" data-loader role="status" aria-live="polite" aria-label="Cargando el sistema">
-  <div class="loader__panel">
-    <p class="loader__line">
-      <span>INICIALIZANDO SISTEMA...</span>
-      <span>SYS//01</span>
+  <div class="loader__scene">
+    <p class="loader__line mono">
+      <span class="loader__prompt" aria-hidden="true">&gt;</span>
+      <span>INICIALIZANDO SISTEMA</span>
+      <span class="loader__status">SYS//01</span>
     </p>
-    <div class="loader__bar" aria-hidden="true"><span></span></div>
-    <button class="loader__skip" type="button" data-loader-skip>OMITIR</button>
+
+    <div class="loader__track" aria-hidden="true"><span></span></div>
+
+    <div class="loader__meta mono">
+      <span class="loader__sequence">POLARIZADO // WRAP // LUCES // SONIDO // ESTÉTICA</span>
+      <button class="loader__skip" type="button" data-loader-skip>OMITIR [ESC]</button>
+    </div>
   </div>
 </div>
