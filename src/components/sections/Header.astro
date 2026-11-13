@@ -1,0 +1,290 @@
+---
+import NeonButton from '../ui/NeonButton.astro';
+import { whatsappHref } from '../../data/business';
+
+const quoteHref = whatsappHref('Hola Mundo Biker, quiero cotizar un servicio.');
+const links = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="#inicio" data-logo>
+      <span class="logo__mark" aria-hidden="true">MB</span>
+      <span class="logo__text">MUNDO<span>BIKER</span></span>
+    </a>
+
+    <nav class="header__nav" aria-label="Navegación principal">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <div class="header__actions">
+      <div class="header__cta-wrap">
+        <NeonButton href={quoteHref}>Cotiza ya</NeonButton>
+      </div>
+
+      <button
+        class="header__toggle"
+        type="button"
+        data-menu-toggle
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Abrir menú"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" data-menu aria-hidden="true" aria-label="Menú móvil">
+  <div class="container mobile-menu__inner">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <NeonButton href={quoteHref}>Cotiza ya</NeonButton>
+  </div>
+</nav>
+
+<noscript>
+  <style>
+    :root {
+      --header-h: 7.5rem;
+    }
+
+    .header {
+      height: 4.5rem;
+    }
+
+    .header__toggle {
+      display: none !important;
+    }
+
+    .nojs-nav {
+      position: fixed;
+      top: 4.5rem;
+      left: 0;
+      right: 0;
+      z-index: var(--z-header);
+      display: flex;
+      height: 3rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--neon-cyan);
+    }
+
+    .nojs-nav__inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      height: 100%;
+      overflow-x: auto;
+    }
+
+    .nojs-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+  </style>
+
+  <nav class="nojs-nav" aria-label="Navegación sin JavaScript">
+    <div class="container nojs-nav__inner">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  </nav>
+</noscript>
+
+<script>
+  import '../../scripts/menu';
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-header);
+    height: var(--header-h);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    height: 100%;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .logo__mark {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 900;
+    box-shadow: var(--glow-box-cyan);
+    clip-path: var(--clip-corner-sm);
+  }
+
+  .logo__text {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .logo__text span {
+    color: var(--neon-magenta);
+    text-shadow: var(--glow-text-magenta);
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(var(--space-3), 2vw, var(--space-6));
+  }
+
+  .header__nav a {
+    padding: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    transition: color var(--dur-fast);
+  }
+
+  .header__nav a:hover,
+  .header__nav a:focus-visible {
+    color: var(--neon-cyan);
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .header__cta-wrap {
+    animation: cta-pulse 3.2s ease-in-out infinite;
+  }
+
+  .header__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+  }
+
+  .header__toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 4px auto;
+    background: var(--neon-cyan);
+    transition: transform var(--dur-fast);
+  }
+
+  .header__toggle[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .header__toggle[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__toggle[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: var(--header-h) 0 auto;
+    z-index: calc(var(--z-header) - 1);
+    display: none;
+    border-bottom: 1px solid var(--neon-cyan);
+    background: var(--bg);
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--bg) 80%, transparent);
+  }
+
+  .mobile-menu[data-open] {
+    display: block;
+  }
+
+  .mobile-menu__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-4) var(--space-8);
+  }
+
+  .mobile-menu a {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @keyframes cta-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.82;
+      transform: scale(0.985);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .header__nav {
+      display: none;
+    }
+
+    .header__toggle {
+      display: block;
+    }
+
+    .header__cta-wrap {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header__cta-wrap {
+      animation: none;
+    }
+
+    .header {
+      backdrop-filter: none;
+    }
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+const backBuildings = [
+  { x: 0, w: 90, h: 190 },
+  { x: 110, w: 70, h: 250 },
+  { x: 200, w: 110, h: 170 },
+  { x: 330, w: 80, h: 280 },
+  { x: 430, w: 120, h: 210 },
+  { x: 570, w: 90, h: 260 },
+  { x: 680, w: 120, h: 180 },
+  { x: 820, w: 80, h: 300 },
+  { x: 920, w: 110, h: 220 },
+  { x: 1050, w: 90, h: 270 },
+  { x: 1160, w: 130, h: 190 },
+  { x: 1310, w: 130, h: 240 },
+];
+
+const frontBuildings = [
+  { x: 20, w: 150, h: 120 },
+  { x: 200, w: 120, h: 160 },
+  { x: 360, w: 180, h: 110 },
+  { x: 570, w: 140, h: 150 },
+  { x: 740, w: 170, h: 125 },
+  { x: 940, w: 130, h: 165 },
+  { x: 1100, w: 180, h: 120 },
+  { x: 1310, w: 130, h: 150 },
+];
+
+const windows = (x: number, w: number, h: number) => {
+  const cols = Math.max(2, Math.floor(w / 22));
+  const rows = Math.max(2, Math.floor(h / 26));
+  const items: { x: number; y: number }[] = [];
+
+  for (let row = 0; row < rows; row += 1) {
+    for (let col = 0; col < cols; col += 1) {
+      if ((row + col) % 4 === 0) continue;
+      items.push({
+        x: x + 10 + col * ((w - 20) / cols),
+        y: 420 - h + 12 + row * ((h - 24) / rows),
+      });
+    }
+  }
+
+  return items;
+};
+---
+
+<svg
+  class="city"
+  viewBox="0 0 1440 420"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class="city__layer city__layer--back parallax" data-parallax="0.12">
+    {backBuildings.map((building) => (
+      <g>
+        <rect class="city__block" x={building.x} y={420 - building.h} width={building.w} height={building.h} />
+        {windows(building.x, building.w, building.h).map((window) => (
+          <rect class="city__window" x={window.x} y={window.y} width="6" height="4" />
+        ))}
+      </g>
+    ))}
+  </g>
+
+  <g class="city__layer city__layer--front parallax" data-parallax="0.22">
+    {frontBuildings.map((building) => (
+      <g>
+        <rect class="city__block city__block--front" x={building.x} y={420 - building.h} width={building.w} height={building.h} />
+        {windows(building.x, building.w, building.h).map((window) => (
+          <rect class="city__window city__window--front" x={window.x} y={window.y} width="7" height="5" />
+        ))}
+      </g>
+    ))}
+    <rect class="city__sign" x="230" y="286" width="62" height="10" />
+    <rect class="city__sign city__sign--alt" x="760" y="312" width="88" height="8" />
+    <rect class="city__sign" x="1160" y="280" width="54" height="12" />
+    <path class="city__wire" d="M0 80c180 40 340-20 520 10s340 40 520 0 300-10 400 20" />
+    <path class="city__wire" d="M0 120c220 30 400-30 620 0s360 50 520 10 220-20 300 0" />
+  </g>
+</svg>
+
+<style>
+  .city {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .city__block {
+    fill: var(--bg-wall);
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+
+  .city__block--front {
+    fill: color-mix(in srgb, var(--bg-wall) 80%, var(--bg));
+  }
+
+  .city__window {
+    fill: var(--neon-cyan);
+    opacity: 0.35;
+  }
+
+  .city__window--front {
+    fill: var(--neon-magenta);
+    opacity: 0.28;
+  }
+
+  .city__sign {
+    fill: var(--neon-magenta);
+    opacity: 0.85;
+  }
+
+  .city__sign--alt {
+    fill: var(--neon-acid);
+  }
+
+  .city__wire {
+    fill: none;
+    stroke: var(--line-strong);
+    stroke-width: 1.5;
+  }
+</style>

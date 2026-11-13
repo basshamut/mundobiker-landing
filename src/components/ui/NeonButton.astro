@@ -1,0 +1,126 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit';
+  variant?: 'primary' | 'secondary';
+  class?: string;
+  ariaLabel?: string;
+  target?: string;
+  rel?: string;
+  id?: string;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'primary',
+  class: className,
+  ariaLabel,
+  target,
+  rel,
+  id,
+} = Astro.props;
+---
+
+<span class:list={['neon-btn__frame', `neon-btn__frame--${variant}`]}>
+  {
+    href ? (
+      <a
+        id={id}
+        class:list={['neon-btn', `neon-btn--${variant}`, className]}
+        href={href}
+        aria-label={ariaLabel}
+        target={target}
+        rel={rel}
+      >
+        <span><slot /></span>
+      </a>
+    ) : (
+      <button
+        id={id}
+        class:list={['neon-btn', `neon-btn--${variant}`, className]}
+        type={type}
+        aria-label={ariaLabel}
+      >
+        <span><slot /></span>
+      </button>
+    )
+  }
+</span>
+
+<style>
+  .neon-btn__frame {
+    display: flex;
+    max-width: 100%;
+  }
+
+  .neon-btn__frame--primary {
+    filter: drop-shadow(
+      0 0 9px color-mix(in srgb, var(--neon-magenta) 55%, transparent)
+    );
+  }
+
+  .neon-btn__frame--secondary {
+    filter: drop-shadow(
+      0 0 8px color-mix(in srgb, var(--neon-cyan) 32%, transparent)
+    );
+  }
+
+  .neon-btn {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid transparent;
+    clip-path: var(--clip-corner-sm);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition:
+      transform var(--dur-fast) var(--ease-snap),
+      box-shadow var(--dur-fast) var(--ease-snap),
+      background var(--dur-fast) var(--ease-snap);
+  }
+
+  .neon-btn--primary {
+    background: var(--neon-magenta);
+    color: var(--bg);
+    box-shadow: var(--glow-box-magenta);
+  }
+
+  .neon-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px var(--neon-magenta),
+      0 0 18px var(--neon-magenta),
+      0 0 52px color-mix(in srgb, var(--neon-magenta) 55%, transparent);
+  }
+
+  .neon-btn--secondary {
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--glow-box-cyan);
+  }
+
+  .neon-btn--secondary:hover {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--neon-cyan) 12%, var(--bg));
+  }
+
+  .neon-btn:active {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .neon-btn__frame--primary,
+    .neon-btn__frame--secondary {
+      filter: none;
+    }
+  }
+</style>

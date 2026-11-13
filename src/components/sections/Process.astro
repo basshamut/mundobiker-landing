@@ -1,0 +1,194 @@
+---
+const steps = [
+  {
+    title: 'Cotiza',
+    description: 'Nos dices qué traes y qué quieres. Te respondemos por WhatsApp.',
+  },
+  {
+    title: 'Diseño',
+    description: 'Aterrizamos el look: color, acabado, medidas y detalles.',
+  },
+  {
+    title: 'Instalación',
+    description: 'Manos a la obra en el taller. Materiales y cortes limpios.',
+  },
+  {
+    title: 'Entrega',
+    description: 'Revisamos juntos y te vas con tu máquina transformada.',
+  },
+];
+---
+
+<section
+  id="proceso"
+  class="section section--alt process"
+  aria-labelledby="proceso-title"
+>
+  <div class="container">
+    <div class="section-head neon-ignite" data-reveal>
+      <p class="eyebrow">PROCESO</p>
+      <h2 id="proceso-title">DE LA IDEA A LA CALLE</h2>
+      <p>
+        Cuatro pasos, cero sorpresas. Tú eliges el look; nosotros lo ejecutamos.
+      </p>
+    </div>
+
+    <ol class="process__list" data-reveal>
+      {steps.map((step) => (
+        <li class="process__item">
+          <span class="process__node" aria-hidden="true"></span>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(var(--space-4), 3vw, var(--space-8));
+  }
+
+  .process__list::before {
+    content: '';
+    position: absolute;
+    top: 1.4rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--neon-cyan) 8%,
+      var(--neon-magenta) 50%,
+      var(--neon-cyan) 92%,
+      transparent
+    );
+    opacity: 0.55;
+  }
+
+  .process__item {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    padding-top: 0;
+  }
+
+  .process__node {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--neon-cyan) 28%, transparent);
+  }
+
+  .process__node::after {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    background: currentColor;
+    transform: rotate(45deg);
+  }
+
+  .process__item:nth-child(2) .process__node {
+    border-color: var(--neon-acid);
+    color: var(--neon-acid);
+  }
+
+  .process__item:nth-child(3) .process__node {
+    border-color: var(--neon-magenta);
+    color: var(--neon-magenta);
+  }
+
+  .process__item:nth-child(4) .process__node {
+    border-color: var(--neon-violet);
+    color: var(--text);
+  }
+
+  .process__list.is-visible .process__node {
+    animation: node-ignite 0.55s var(--ease-snap) both;
+  }
+
+  .process__list.is-visible .process__item:nth-child(2) .process__node {
+    animation-delay: 0.25s;
+  }
+
+  .process__list.is-visible .process__item:nth-child(3) .process__node {
+    animation-delay: 0.5s;
+  }
+
+  .process__list.is-visible .process__item:nth-child(4) .process__node {
+    animation-delay: 0.75s;
+  }
+
+  .process__item h3 {
+    margin-top: var(--space-2);
+    font-size: var(--fs-h3);
+  }
+
+  .process__item p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  @keyframes node-ignite {
+    from {
+      opacity: 0.25;
+      transform: scale(0.82);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .process__list {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      padding-left: 1.6rem;
+    }
+
+    .process__list::before {
+      top: 0;
+      bottom: 0;
+      left: 1.35rem;
+      width: 1px;
+      height: auto;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--neon-cyan) 8%,
+        var(--neon-magenta) 50%,
+        var(--neon-cyan) 92%,
+        transparent
+      );
+    }
+
+    .process__node {
+      position: absolute;
+      top: 0;
+      left: -1.6rem;
+    }
+
+    .process__item h3 {
+      margin-top: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process__list.is-visible .process__node {
+      animation: none;
+    }
+  }
+</style>

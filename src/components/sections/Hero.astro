@@ -1,0 +1,153 @@
+---
+import NeonButton from '../ui/NeonButton.astro';
+import CityScape from '../svg/CityScape.astro';
+import { whatsappHref } from '../../data/business';
+
+const quoteHref = whatsappHref(
+  'Hola Mundo Biker, quiero cotizar un servicio para mi auto o moto.',
+);
+---
+
+<section id="inicio" class="hero" data-animate>
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__city"><CityScape /></div>
+    <div class="rain">
+      <span class="rain__layer"></span>
+      <span class="rain__layer"></span>
+      <span class="rain__layer"></span>
+    </div>
+    <div class="scanlines"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow">CDMX // TALLER DE ESTÉTICA AUTOMOTRIZ</p>
+
+      <h1 class="hero__title">
+        <span class="glitch" data-text="TU AUTO.">TU AUTO.</span><br />
+        <span class="glitch" data-text="TU MOTO.">TU MOTO.</span><br />
+        <span class="hero__title-accent glitch" data-text="TU IDENTIDAD.">TU IDENTIDAD.</span>
+      </h1>
+
+      <p class="hero__subtitle">
+        Polarizado, wrap, luces y actitud. En CDMX. Sin vueltas: eliges el look
+        y nosotros lo montamos.
+      </p>
+
+      <div class="hero__actions">
+        <NeonButton href={quoteHref}>Cotiza por WhatsApp</NeonButton>
+        <NeonButton href="#servicios" variant="secondary">Ver servicios</NeonButton>
+      </div>
+
+      <p class="hero__meta mono">
+        SERVICIOS // TALLER // CERO PLANTILLAS
+      </p>
+    </div>
+  </div>
+
+  <a class="hero__scroll mono" href="#servicios">
+    SCROLL // SERVICIOS <span aria-hidden="true">v</span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100svh;
+    padding-block: calc(var(--header-h) + var(--space-12)) var(--space-16);
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero__city {
+    position: absolute;
+    inset: auto 0 0;
+    height: 64%;
+    opacity: 0.9;
+    mask-image: linear-gradient(to top, #000 55%, transparent 100%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .hero__content {
+    display: grid;
+    gap: var(--space-6);
+    max-width: 60rem;
+  }
+
+  .hero__title {
+    font-size: var(--fs-hero);
+    line-height: 0.92;
+    text-shadow: var(--glow-text-cyan);
+  }
+
+  .hero__title-accent {
+    color: var(--neon-magenta);
+    text-shadow: var(--glow-text-magenta);
+  }
+
+  .hero__subtitle {
+    max-width: 44ch;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .hero__meta {
+    margin: 0;
+    color: var(--neon-acid);
+    font-size: 0.7rem;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: var(--space-4);
+    left: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    color: var(--text-dim);
+    font-size: 0.62rem;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 1023px) {
+    .hero__city {
+      height: 48%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      padding-block: calc(var(--header-h) + var(--space-8)) var(--space-12);
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+  }
+</style>

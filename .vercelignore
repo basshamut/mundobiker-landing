@@ -1,0 +1,7 @@
+openspec
+.agents
+.opencode
+node_modules
+dist
+.git
+*.log

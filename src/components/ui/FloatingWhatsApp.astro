@@ -1,0 +1,83 @@
+---
+import { business, whatsappHref } from '../../data/business';
+
+const pending = business.pending.whatsapp;
+const href = whatsappHref('Hola Mundo Biker, quiero cotizar un servicio.');
+const label = pending ? 'WhatsApp pendiente: [NÚMERO]' : 'Abrir WhatsApp';
+---
+
+<a
+  class:list={['wa-float', { 'wa-float--pending': pending }]}
+  href={href}
+  aria-label={label}
+  data-wa-float
+>
+  <span class="wa-float__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.2A8 8 0 1 1 20 11.5Z"></path>
+      <path d="M8.5 9.5c0 3 2 5 5 5"></path>
+    </svg>
+  </span>
+  <span class="wa-float__text">{pending ? 'WA [NÚMERO]' : 'WHATSAPP'}</span>
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    right: max(var(--space-3), env(safe-area-inset-right));
+    bottom: max(var(--space-3), env(safe-area-inset-bottom));
+    z-index: var(--z-float);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 48px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--neon-green);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    color: var(--neon-green);
+    box-shadow:
+      0 0 0 1px var(--neon-green),
+      0 0 18px color-mix(in srgb, var(--neon-green) 40%, transparent);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(8px);
+    transition: transform var(--dur-fast) var(--ease-snap);
+  }
+
+  .wa-float:hover {
+    transform: translateY(-2px);
+  }
+
+  .wa-float--pending {
+    border-color: var(--neon-orange);
+    color: var(--neon-orange);
+    box-shadow:
+      0 0 0 1px var(--neon-orange),
+      0 0 18px color-mix(in srgb, var(--neon-orange) 35%, transparent);
+  }
+
+  .wa-float__icon svg {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    .wa-float {
+      padding: var(--space-3);
+    }
+
+    .wa-float__text {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wa-float {
+      backdrop-filter: none;
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  rotate?: number;
+  class?: string;
+}
+
+const { rotate = 0, class: className } = Astro.props;
+---
+
+<div class:list={['sticker', className]} style={`--rot: ${rotate}deg`}>
+  <span class="sticker__tape" aria-hidden="true"></span>
+  <slot />
+</div>
+
+<style>
+  .sticker {
+    position: relative;
+    padding: var(--space-6) var(--space-5, 1.25rem);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-raised);
+    box-shadow: 7px 7px 0 color-mix(in srgb, var(--line-strong) 55%, transparent);
+    transform: rotate(var(--rot, 0deg));
+  }
+
+  .sticker__tape {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    width: 4.5rem;
+    height: 1.4rem;
+    background: color-mix(in srgb, var(--neon-acid) 24%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neon-acid) 40%, transparent);
+    transform: translateX(-50%) rotate(-3deg);
+    opacity: 0.8;
+  }
+</style>

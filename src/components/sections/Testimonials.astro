@@ -1,0 +1,80 @@
+---
+import Sticker from '../ui/Sticker.astro';
+
+const placeholders = [
+  { rotate: -3 },
+  { rotate: 2 },
+  { rotate: -1.5 },
+];
+---
+
+<section
+  id="testimonios"
+  class="section section--alt testimonials"
+  aria-labelledby="testimonios-title"
+>
+  <div class="container">
+    <div class="section-head neon-ignite" data-reveal>
+      <p class="eyebrow">VOCES // PENDIENTES</p>
+      <h2 id="testimonios-title">LO QUE DICE LA CALLE</h2>
+      <p>
+        Cuando haya reseñas reales, van aquí. Mientras tanto, no inventamos
+        nombres ni estrellas.
+      </p>
+    </div>
+
+    <!-- TODO: reemplazar con testimonios reales autorizados -->
+    <ul class="testimonials__grid">
+      {placeholders.map((item) => (
+        <li>
+          <Sticker rotate={item.rotate}>
+            <p class="testimonial__tag mono">RESEÑA // PENDIENTE</p>
+            <blockquote class="testimonial__quote">
+              Espacio reservado para una reseña real de un cliente.
+            </blockquote>
+            <footer class="testimonial__author mono">
+              CLIENTE // PENDIENTE
+            </footer>
+          </Sticker>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(var(--space-4), 3vw, var(--space-8));
+  }
+
+  .testimonial__tag {
+    margin: 0 0 var(--space-3);
+    color: var(--neon-acid);
+    font-size: 0.6rem;
+  }
+
+  .testimonial__quote {
+    margin: 0;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .testimonial__author {
+    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+    border-top: 1px dashed var(--line-strong);
+    color: var(--text-dim);
+    font-size: 0.6rem;
+  }
+
+  @media (max-width: 767px) {
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      padding-inline: var(--space-2);
+    }
+  }
+</style>

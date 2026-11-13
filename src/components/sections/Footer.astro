@@ -1,0 +1,152 @@
+---
+import GraffitiMark from '../svg/GraffitiMark.astro';
+import { instagramHref, tiktokHref } from '../../data/business';
+
+const instagram = instagramHref();
+const tiktok = tiktokHref();
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <GraffitiMark />
+      <p class="footer__tagline mono">
+        POLARIZADO // WRAP // LUCES // SONIDO // ESTÉTICA
+      </p>
+    </div>
+
+    <div class="footer__meta">
+      <p class="mono">CDMX // TALLER DE ESTÉTICA AUTOMOTRIZ</p>
+      <p class="mono footer__pending">
+        SITIO EN CONSTRUCCIÓN: DATOS Y FOTOS REALES PENDIENTES
+      </p>
+    </div>
+
+    <div class="footer__links">
+      <div class="footer__social">
+        {instagram ? (
+          <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+        ) : (
+          <span>Instagram [@USUARIO]</span>
+        )}
+        {tiktok ? (
+          <a href={tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+        ) : (
+          <span>TikTok [@USUARIO]</span>
+        )}
+      </div>
+
+      <a class="footer__top mono" href="#inicio">VOLVER ARRIBA</a>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="mono">© {year} MUNDO BIKER. CDMX.</p>
+      <p class="mono">HECHO EN LA CALLE // SIN PLANTILLAS</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    z-index: var(--z-base);
+    padding-block: var(--space-12) 8rem;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
+    gap: var(--space-8);
+  }
+
+  .footer__brand {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+
+  .footer__tagline {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.6rem;
+  }
+
+  .footer__meta {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+
+  .footer__meta p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.62rem;
+  }
+
+  .footer__pending {
+    color: var(--neon-orange) !important;
+  }
+
+  .footer__links {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    justify-items: start;
+  }
+
+  .footer__social {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .footer__social a {
+    color: var(--neon-cyan);
+  }
+
+  .footer__top {
+    color: var(--neon-magenta);
+    font-size: 0.62rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .footer__bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--line);
+  }
+
+  .footer__bottom p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.6rem;
+  }
+
+  @media (max-width: 960px) {
+    .footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding-bottom: 9rem;
+    }
+
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

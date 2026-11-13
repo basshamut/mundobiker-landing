@@ -1,0 +1,89 @@
+---
+import type { ServiceIconName } from '../../data/services';
+
+interface Props {
+  name: ServiceIconName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+---
+
+<svg
+  class:list={['service-icon', className]}
+  viewBox="0 0 48 48"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {name === 'polarizado' && (
+    <>
+      <rect x="6" y="11" width="36" height="22" rx="3" />
+      <path d="M11 28 27 14M19 30 33 16M27 30 38 20" />
+      <circle cx="35" cy="9" r="4" />
+      <path d="M35 3v-1M35 16v-1M28 9h-1M42 9h-1" />
+    </>
+  )}
+  {name === 'seguridad' && (
+    <>
+      <path d="M24 5 39 11v12c0 9-6.5 15.5-15 20-8.5-4.5-15-11-15-20V11L24 5Z" />
+      <path d="m16 24 5 5 11-11" />
+    </>
+  )}
+  {name === 'wrap' && (
+    <>
+      <path d="M8 31h32l-3-9H14l-6 9Z" />
+      <circle cx="15" cy="35" r="3.5" />
+      <circle cx="33" cy="35" r="3.5" />
+      <path d="M14 22c4-6 12-8 20-4" />
+      <path d="M32 42c4 0 6-2 6-5" />
+    </>
+  )}
+  {name === 'calcomania' && (
+    <>
+      <path d="M11 12h19l7 7v17H11V12Z" />
+      <circle cx="18" cy="20" r="2" />
+      <path d="M17 31c4-4 8-4 14 0" />
+      <path d="m33 8 2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 4-1 2-4Z" />
+    </>
+  )}
+  {name === 'accesorios' && (
+    <>
+      <path d="M13 35a6 6 0 0 0 8-8l12-12 3 3-12 12a6 6 0 0 0-8 8l-3-3Z" />
+      <circle cx="18" cy="30" r="2" />
+      <path d="M9 9h8v8H9zM12 7v4M12 15v4" />
+    </>
+  )}
+  {name === 'faros' && (
+    <>
+      <path d="M9 17h13a7 7 0 0 1 0 14H9V17Z" />
+      <path d="M27 18h4M27 24h6M27 30h4" />
+      <path d="M19 14v-3M13 15l-2-3M25 15l2-3" />
+    </>
+  )}
+  {name === 'estetica' && (
+    <>
+      <path d="m24 5 3 12 12 3-12 3-3 12-3-12-12-3 12-3 3-12Z" />
+      <path d="m39 8 1 4 4 1-4 1-1 4-1-4-4-1 4-1 1-4Z" />
+      <path d="m10 35 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z" />
+    </>
+  )}
+  {name === 'sonido' && (
+    <>
+      <path d="M9 19h7l9-7v24l-9-7H9V19Z" />
+      <path d="M31 18a9 9 0 0 1 0 12M35 14a14 14 0 0 1 0 20" />
+    </>
+  )}
+</svg>
+
+<style>
+  .service-icon {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+</style>

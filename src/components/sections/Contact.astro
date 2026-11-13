@@ -1,0 +1,359 @@
+---
+import NeonButton from '../ui/NeonButton.astro';
+import {
+  business,
+  directionsHref,
+  instagramHref,
+  tiktokHref,
+  whatsappHref,
+} from '../../data/business';
+import { services } from '../../data/services';
+
+const instagram = instagramHref();
+const tiktok = tiktokHref();
+const quoteHref = whatsappHref('Hola Mundo Biker, quiero cotizar un servicio.');
+---
+
+<section id="contacto" class="section contact" aria-labelledby="contacto-title">
+  <div class="container">
+    <div class="section-head neon-ignite" data-reveal>
+      <p class="eyebrow">CONTACTO // CDMX</p>
+      <h2 id="contacto-title">MÁNDANOS TU LOOK</h2>
+      <p>
+        Cuéntanos qué traes y qué quieres. Te contestamos por WhatsApp con el
+        siguiente paso.
+      </p>
+    </div>
+
+    <div class="contact__layout">
+      <form class="contact__form" data-contact-form novalidate>
+        <p class="mono contact__kicker">FORMULARIO // COTIZA</p>
+
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input
+            id="nombre"
+            name="nombre"
+            type="text"
+            data-field="nombre"
+            autocomplete="name"
+            required
+          />
+          <span class="field__error" id="error-nombre" data-error-for="nombre" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="vehiculo">Vehículo</label>
+          <input
+            id="vehiculo"
+            name="vehiculo"
+            type="text"
+            data-field="vehiculo"
+            autocomplete="off"
+            placeholder="Auto, moto, modelo..."
+            required
+          />
+          <span class="field__error" id="error-vehiculo" data-error-for="vehiculo" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="servicio">Servicio de interés</label>
+          <select id="servicio" name="servicio" data-field="servicio" required>
+            <option value="">Elige un servicio</option>
+            {services.map((service) => (
+              <option value={service.name}>{service.name}</option>
+            ))}
+          </select>
+          <span class="field__error" id="error-servicio" data-error-for="servicio" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            data-field="mensaje"
+            rows="5"
+            placeholder="Cuéntanos qué quieres hacerle a tu máquina."
+            required
+          ></textarea>
+          <span class="field__error" id="error-mensaje" data-error-for="mensaje" hidden></span>
+        </div>
+
+        <NeonButton type="submit">Enviar por WhatsApp</NeonButton>
+
+        <p class="contact__status" data-form-status role="status" aria-live="polite"></p>
+        <p class="contact__privacy mono">
+          TUS DATOS NO SE ENVÍAN A TERCEROS. EL BOTÓN ABRE WHATSAPP CON TU
+          MENSAJE.
+        </p>
+      </form>
+
+      <aside class="contact__info" aria-label="Datos de contacto">
+        <div class="info-block">
+          <p class="info-block__label mono">WHATSAPP</p>
+          {business.pending.whatsapp ? (
+            <p class="info-block__value pending">
+              [NÚMERO] <span class="mono">PENDIENTE</span>
+            </p>
+          ) : (
+            <a class="info-block__value" href={quoteHref}>{business.whatsapp}</a>
+          )}
+        </div>
+
+        <div class="info-block">
+          <p class="info-block__label mono">UBICACIÓN</p>
+          <p class:list={['info-block__value', { pending: business.pending.address }]}>
+            {business.address}
+            {business.pending.address && <span class="mono">PENDIENTE</span>}
+          </p>
+          <a class="info-block__link mono" href={directionsHref()} target="_blank" rel="noopener noreferrer">
+            VER INDICACIONES
+          </a>
+        </div>
+
+        <div class="info-block">
+          <p class="info-block__label mono">HORARIO</p>
+          <p class:list={['info-block__value', { pending: business.pending.hours }]}>
+            {business.hours}
+            {business.pending.hours && <span class="mono">PENDIENTE</span>}
+          </p>
+        </div>
+
+        <div class="info-block">
+          <p class="info-block__label mono">REDES</p>
+          <div class="info-block__social">
+            {instagram ? (
+              <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+            ) : (
+              <span>Instagram [@USUARIO] <span class="mono">PENDIENTE</span></span>
+            )}
+            {tiktok ? (
+              <a href={tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+            ) : (
+              <span>TikTok [@USUARIO] <span class="mono">PENDIENTE</span></span>
+            )}
+          </div>
+        </div>
+
+        <a class="contact__map" href={directionsHref()} target="_blank" rel="noopener noreferrer">
+          <span class="contact__map-grid" aria-hidden="true"></span>
+          <span class="contact__map-marker" aria-hidden="true"></span>
+          <span class="contact__map-label mono">MAPA ESTÁTICO // ABRIR INDICACIONES</span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/form';
+</script>
+
+<style>
+  .contact__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(var(--space-4), 3vw, var(--space-8));
+    align-items: start;
+  }
+
+  .contact__form {
+    display: grid;
+    gap: var(--space-4);
+    padding: clamp(var(--space-4), 3vw, var(--space-6));
+    border: 1px solid var(--line-strong);
+    background: var(--bg-raised);
+    clip-path: var(--clip-corner);
+  }
+
+  .contact__kicker {
+    margin: 0;
+    color: var(--neon-acid);
+    font-size: 0.62rem;
+  }
+
+  .field {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .field label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color var(--dur-fast);
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 7rem;
+  }
+
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    border-color: var(--neon-cyan);
+    outline-offset: 2px;
+  }
+
+  .field input[aria-invalid='true'],
+  .field select[aria-invalid='true'],
+  .field textarea[aria-invalid='true'] {
+    border-color: var(--neon-red);
+  }
+
+  .field__error {
+    color: var(--neon-red);
+    font-size: 0.75rem;
+  }
+
+  .field__error[hidden] {
+    display: none;
+  }
+
+  .contact__status {
+    min-height: 1.4rem;
+    margin: 0;
+    color: var(--neon-green);
+    font-size: 0.8rem;
+  }
+
+  .contact__privacy {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.56rem;
+    line-height: 1.5;
+  }
+
+  .contact__info {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .info-block {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    clip-path: var(--clip-corner-sm);
+  }
+
+  .info-block__label {
+    margin: 0 0 var(--space-1);
+    color: var(--neon-cyan);
+    font-size: 0.6rem;
+  }
+
+  .info-block__value {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+
+  .info-block__value.pending {
+    color: var(--neon-orange);
+  }
+
+  .info-block__value.pending .mono {
+    font-size: 0.58rem;
+    color: var(--text-dim);
+  }
+
+  .info-block__link {
+    display: inline-block;
+    margin-top: var(--space-2);
+    color: var(--neon-cyan);
+    font-size: 0.6rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .info-block__social {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .info-block__social a {
+    color: var(--neon-cyan);
+  }
+
+  .info-block__social .mono {
+    font-size: 0.58rem;
+    color: var(--text-dim);
+  }
+
+  .contact__map {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--bg);
+    clip-path: var(--clip-corner-sm);
+  }
+
+  .contact__map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--line) 65%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--line) 65%, transparent) 1px, transparent 1px);
+    background-size: 32px 32px;
+    transform: rotate(-3deg) scale(1.1);
+  }
+
+  .contact__map-marker {
+    position: relative;
+    z-index: 1;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 2px solid var(--neon-magenta);
+    border-radius: 50%;
+    background: var(--bg);
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--neon-magenta) 22%, transparent),
+      0 0 22px var(--neon-magenta);
+  }
+
+  .contact__map-label {
+    position: absolute;
+    bottom: var(--space-2);
+    left: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    color: var(--text-dim);
+    font-size: 0.56rem;
+  }
+
+  @media (max-width: 960px) {
+    .contact__layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact {
+      padding-bottom: calc(var(--space-16) + 4rem);
+    }
+  }
+</style>

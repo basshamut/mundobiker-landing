@@ -1,0 +1,126 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/effects.css';
+import Loader from '../components/ui/Loader.astro';
+import FloatingWhatsApp from '../components/ui/FloatingWhatsApp.astro';
+import {
+  business,
+  instagramHref,
+  tiktokHref,
+} from '../data/business';
+import { isSiteResolved, siteUrl } from '../data/site';
+import { services } from '../data/services';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const title =
+  Astro.props.title ??
+  'Mundo Biker | Polarizado, Wrap y Estética Automotriz en CDMX';
+const description =
+  Astro.props.description ??
+  'Polarizado, película de seguridad, full wrap, calcomanías, accesorios, pulido de faros, estética general e iluminación y sonido en CDMX. Cotiza por WhatsApp.';
+const canonical = isSiteResolved ? `${siteUrl}/` : undefined;
+const socialImage = `${siteUrl}/og-image.png`;
+
+const sameAs = [instagramHref(), tiktokHref()].filter(
+  (value): value is string => Boolean(value),
+);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoBodyShop',
+  name: business.name,
+  description,
+  url: canonical,
+  image: socialImage,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: business.city,
+    addressRegion: 'CDMX',
+    addressCountry: 'MX',
+    ...(business.pending.address ? {} : { streetAddress: business.address }),
+  },
+  ...(business.pending.whatsapp ? {} : { telephone: business.whatsapp }),
+  ...(business.pending.hours ? {} : { openingHours: business.hours }),
+  ...(sameAs.length > 0 ? { sameAs } : {}),
+  areaServed: business.city,
+  makesOffer: services.map((service) => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: service.name,
+      description: service.description,
+    },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07060F" />
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    {canonical && <meta property="og:url" content={canonical} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/orbitron-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <p class="sr-only" role="status" aria-live="polite" data-live-status></p>
+
+    <Loader />
+    <div class="cursor" data-cursor aria-hidden="true"></div>
+
+    <slot />
+
+    <FloatingWhatsApp />
+
+    <script>
+      import '../scripts/loader';
+      import '../scripts/cursor';
+      import '../scripts/parallax';
+      import '../scripts/reveal';
+      import '../scripts/tilt';
+      import '../scripts/konami';
+    </script>
+  </body>
+</html>

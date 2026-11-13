@@ -1,0 +1,32 @@
+---
+interface Props {
+  items?: string[];
+  class?: string;
+}
+
+const {
+  items = ['POLARIZADO', 'WRAP', 'LUCES', 'SONIDO', 'ESTÉTICA'],
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={['marquee', className]} role="region" aria-label="Servicios en neón">
+  <div class="marquee__track">
+    <div class="marquee__group">
+      {items.map((item, index) => (
+        <>
+          {index > 0 && <span aria-hidden="true">//</span>}
+          <span>{item}</span>
+        </>
+      ))}
+    </div>
+    <div class="marquee__group" aria-hidden="true">
+      {items.map((item, index) => (
+        <>
+          {index > 0 && <span>//</span>}
+          <span>{item}</span>
+        </>
+      ))}
+    </div>
+  </div>
+</div>
