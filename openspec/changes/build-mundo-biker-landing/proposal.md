@@ -40,7 +40,7 @@ Ninguna. El proyecto no tiene specs previas.
 - **Nuevo proyecto:** `package.json`, `astro.config.mjs`, `tsconfig.json`, `src/` y `public/`.
 - **Dependencias:** `astro`, `@astrojs/sitemap`, `@astrojs/check` y `typescript`. Sin React, Svelte, Tailwind ni librerías de animación.
 - **Datos:** `src/data/business.ts` (única fuente de verdad) y `src/data/services.ts`.
-- **Assets:** favicon, `og-image.png` y fuentes `.woff2`, con placeholders donde falte material.
+- **Assets:** favicon, `og-image.jpg` y fuentes `.woff2`, con placeholders donde falte material.
 - **Documentación:** se respetan `MUNDOBIKER.md`, `AGENTS.md` y `DESIGN.md`; cualquier conflicto se resuelve según la precedencia documentada.
 - **Fuera de alcance de esta versión:** configurador de wrap, comparador antes/después, silueta de auto en el hero, sonido opcional, mecanismo definitivo de envío del formulario, analytics, destino de despliegue, fotos y testimonios reales, y automatización de pruebas E2E.
 - **Riesgo:** los datos de negocio incompletos (WhatsApp, dirección, horario, redes y dominio) se muestran como placeholder visible y bloquean la publicación final, no la construcción.

@@ -23,8 +23,12 @@ const title =
 const description =
   Astro.props.description ??
   'Polarizado, película de seguridad, full wrap, calcomanías, accesorios, pulido de faros, estética general e iluminación y sonido en CDMX. Cotiza por WhatsApp.';
+const socialTitle = 'Mundo Biker | Polarizado, Wrap y Estética en CDMX';
+const socialDescription =
+  'Polarizado, wrap, luces y estética automotriz en CDMX. Cotiza por WhatsApp con Mundo Biker.';
+const socialImageAlt = `${business.name}: polarizado, wrap y estética automotriz en ${business.city}`;
 const canonical = isSiteResolved ? `${siteUrl}/` : undefined;
-const socialImage = `${siteUrl}/og-image.png`;
+const socialImage = `${siteUrl}/og-image.jpg`;
 
 const sameAs = [instagramHref(), tiktokHref()].filter(
   (value): value is string => Boolean(value),
@@ -74,15 +78,22 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={business.name} />
     <meta property="og:locale" content="es_MX" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialImageAlt} />
     {canonical && <meta property="og:url" content={canonical} />}
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+    {canonical && <meta name="twitter:url" content={canonical} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link

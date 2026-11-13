@@ -25,7 +25,7 @@ El proyecto es estático y no necesita adaptador de Astro.
 1. Importa el repositorio en Vercel.
 2. Framework: **Astro**. Build command: `npm run build`. Output directory: `dist`.
 3. Define `PUBLIC_SITE_URL` en Production con el dominio final, sin slash al final. Si no se define, se usa `VERCEL_PROJECT_PRODUCTION_URL`.
-4. `vercel.json` aplica headers de seguridad y cache para `/fonts`, `/_astro` y `og-image.png`.
+4. `vercel.json` aplica headers de seguridad y cache para `/fonts`, `/_astro` y `og-image.jpg`.
 5. `vercel.json` también fija `cleanUrls` y `trailingSlash: false`.
 
 ```bash
@@ -34,6 +34,13 @@ npx vercel --prod # producción
 ```
 
 Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que canonical, Open Graph y sitemap apunten al dominio correcto. `business.domain` sigue reservado para el dato de negocio.
+
+## Preview en redes
+
+- `og-image.jpg` es 1200x630, pesa menos de 100 KB y se sirve desde `/og-image.jpg`.
+- `Base.astro` publica Open Graph y Twitter Card con título, descripción e imagen absolutos.
+- La imagen y la URL usan `PUBLIC_SITE_URL` o, en Vercel, `VERCEL_PROJECT_PRODUCTION_URL`.
+- Después de desplegar, valida con Meta Sharing Debugger, LinkedIn Post Inspector o X Card Validator. Las redes cachean: fuerza el re-scrape si cambias dominio o imagen.
 
 ## Estructura
 
@@ -49,7 +56,7 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 ├── .nvmrc                   # Node 22
 ├── public/
 │   ├── favicon.svg
-│   ├── og-image.png
+│   ├── og-image.jpg
 │   └── fonts/               # Orbitron, Chakra Petch, Space Mono, Permanent Marker
 └── src/
     ├── layouts/Base.astro

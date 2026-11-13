@@ -54,7 +54,7 @@ Antes de dar una tarea por terminada: `npx astro check` y `npm run build` deben 
 ├── .nvmrc                   # Node 22
 ├── public/
 │   ├── favicon.svg
-│   ├── og-image.png
+│   ├── og-image.jpg
 │   └── fonts/               # fuentes autoalojadas (.woff2)
 └── src/
     ├── layouts/
@@ -147,7 +147,7 @@ La mayoría del tráfico es **móvil**. Diseña mobile-first.
 ## 9. SEO y datos estructurados
 
 - Un único `<h1>` (el del hero). `<title>` y `meta description` únicos, con **Mundo Biker**, **CDMX** y servicios.
-- Open Graph y Twitter Card con imagen en `public/og-image.png`.
+- Open Graph y Twitter Card con imagen en `public/og-image.jpg`.
 - JSON-LD `LocalBusiness` (o `AutoBodyShop`) en `Base.astro`, alimentado desde `src/data/business.ts`: nombre, dirección, teléfono, horario, redes, servicios.
 - `lang="es"`, `sitemap` (integración oficial de Astro) y `robots.txt`. Canonical, Open Graph y sitemap usan `src/data/site.ts`: primero `PUBLIC_SITE_URL`, luego `VERCEL_PROJECT_PRODUCTION_URL` o `VERCEL_URL`. Si no hay URL resuelta, se omite el sitemap y se emite un warning.
 - Enlaces de WhatsApp con formato `https://wa.me/<numero>?text=<mensaje codificado>`.
