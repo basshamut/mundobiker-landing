@@ -47,6 +47,14 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 - `public/logo.webp` es el logo principal con fondo transparente; `public/logo.png` es el fallback para navegadores sin WebP.
 - El header usa el emblema + wordmark y el footer el emblema completo.
 
+## Imágenes de servicios
+
+Estructura: `public/images/services/<service-id>/NN.webp`.
+
+IDs canónicos: `polarizado`, `pelicula-seguridad`, `full-wrap`, `calcomanias`, `accesorios`, `pulido-faros`, `estetica-general`, `iluminacion-sonido`.
+
+Disponibles: `polarizado/01-05.webp` y `full-wrap/01-05.webp`. Los originales de `Assets/` quedaron con los mismos nombres alineados.
+
 ## Estructura
 
 ```
@@ -64,6 +72,7 @@ Cuando conectes el dominio del cliente, actualiza `PUBLIC_SITE_URL` para que can
 │   ├── logo.webp             # logo transparente (principal)
 │   ├── logo.png              # fallback del logo
 │   ├── og-image.jpg
+│   ├── images/services/      # polarizado/ y full-wrap/ (01-05.webp)
 │   └── fonts/               # Orbitron, Chakra Petch, Space Mono, Permanent Marker
 └── src/
     ├── layouts/Base.astro
@@ -90,7 +99,7 @@ Todos los datos viven en `src/data/business.ts`. WhatsApp, dirección y horario 
 
 - Links o handles de Instagram y TikTok.
 - Dominio definitivo y `PUBLIC_SITE_URL` de producción.
-- Fotos reales de galería.
+- Fotos reales de los servicios restantes (polarizado y full wrap ya están).
 - Reseñas reales autorizadas (las actuales son ejemplos marcados).
 - Mecanismo definitivo del formulario (backend propio o servicio externo).
 - Mapa interactivo (iframe) si se decide sustituir el mapa estático.
@@ -102,6 +111,7 @@ Todos los datos viven en `src/data/business.ts`. WhatsApp, dirección y horario 
 - **Alcance:** esta versión omite el configurador de wrap, el comparador antes/después, la silueta de auto del hero y el sonido opcional.
 - **Formulario:** valida en cliente y abre WhatsApp en una pestaña nueva con el mensaje compuesto. No envía datos a terceros.
 - **Reseñas:** las tarjetas actuales son ejemplos de diseño, marcados como muestra; se sustituyen por reseñas reales antes de publicar.
+- **Galería:** fotos reales de polarizado y full wrap; los demás servicios se suman cuando haya material.
 - **Mapa:** SVG estático con enlace a indicaciones de Google Maps. Sin iframes ni cookies de terceros.
 - **Fuentes:** cuatro familias autoalojadas con subset latino y pesos mínimos.
 - **Efectos:** CSS con `transform`/`opacity`; `IntersectionObserver` pausa animaciones fuera de pantalla.

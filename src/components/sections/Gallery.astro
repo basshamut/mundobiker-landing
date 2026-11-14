@@ -1,11 +1,97 @@
 ---
+const base = '/images/services';
+
 const works = [
-  { title: 'Full wrap neón', size: 'wide' },
-  { title: 'Polarizado lateral', size: 'normal' },
-  { title: 'Faros pulidos', size: 'normal' },
-  { title: 'Calcomanía custom', size: 'tall' },
-  { title: 'Detalle de moto', size: 'normal' },
-  { title: 'Iluminación interior', size: 'wide' },
+  {
+    service: 'POLARIZADO',
+    title: 'Polarizado frontal',
+    src: `${base}/polarizado/01.webp`,
+    width: 602,
+    height: 494,
+    alt: 'Chevrolet negro con polarizado y visera verde, vista frontal',
+    size: 'normal',
+  },
+  {
+    service: 'POLARIZADO',
+    title: 'Polarizado en Nissan',
+    src: `${base}/polarizado/02.webp`,
+    width: 488,
+    height: 466,
+    alt: 'Nissan rojo con polarizado y visera verde, vista frontal',
+    size: 'normal',
+  },
+  {
+    service: 'POLARIZADO',
+    title: 'Polarizado lateral',
+    src: `${base}/polarizado/03.webp`,
+    width: 1098,
+    height: 528,
+    alt: 'SUV azul con cristales polarizados, vista lateral',
+    size: 'wide',
+  },
+  {
+    service: 'POLARIZADO',
+    title: 'Antes / después',
+    src: `${base}/polarizado/04.webp`,
+    width: 538,
+    height: 681,
+    alt: 'Antes y después del polarizado en un sedán blanco',
+    size: 'tall',
+  },
+  {
+    service: 'POLARIZADO',
+    title: 'Polarizado deportivo',
+    src: `${base}/polarizado/05.webp`,
+    width: 830,
+    height: 445,
+    alt: 'Auto rojo con cristales polarizados, vista lateral',
+    size: 'wide',
+  },
+  {
+    service: 'FULL WRAP',
+    title: 'Wrap en moto',
+    src: `${base}/full-wrap/01.webp`,
+    width: 1200,
+    height: 1200,
+    alt: 'Antes y después del full wrap en una motocicleta',
+    size: 'wide',
+  },
+  {
+    service: 'FULL WRAP',
+    title: 'Wrap en SUV',
+    src: `${base}/full-wrap/02.webp`,
+    width: 1200,
+    height: 1200,
+    alt: 'Antes y después del full wrap en una SUV',
+    size: 'normal',
+  },
+  {
+    service: 'FULL WRAP',
+    title: 'Wrap en tres ángulos',
+    src: `${base}/full-wrap/03.webp`,
+    width: 604,
+    height: 596,
+    alt: 'Collage de un auto con diferentes acabados de wrap',
+    size: 'tall',
+  },
+  {
+    service: 'FULL WRAP',
+    title: 'Wrap lila',
+    src: `${base}/full-wrap/04.webp`,
+    width: 499,
+    height: 508,
+    alt: 'Audi SUV con full wrap en tono lila',
+    size: 'normal',
+  },
+  {
+    service: 'FULL WRAP',
+    title: 'Wrap proyecto especial',
+    src: `${base}/full-wrap/05.webp`,
+    width: 677,
+    height: 675,
+    alt: 'Antes y después del full wrap en un vehículo pequeño',
+    size: 'normal',
+  },
 ];
 ---
 
@@ -15,12 +101,12 @@ const works = [
       <p class="eyebrow">GALERÍA // MURO</p>
       <h2 id="galeria-title">EL MURO DE LOS TRABAJOS</h2>
       <p>
-        Aquí van los trabajos reales. Por ahora, placeholders honestos: nada de
-        fotos de stock ni portafolios inventados.
+        Polarizado y full wrap reales. Las fotos de los demás servicios se suman
+        cuando el cliente las entregue.
       </p>
     </div>
 
-    <!-- TODO: reemplazar placeholders con fotos reales de trabajos -->
+    <!-- TODO: sumar fotos de los servicios restantes cuando el cliente las entregue -->
     <ul class="gallery__grid">
       {works.map((work) => (
         <li class:list={['gallery__item', `gallery__item--${work.size}`]}>
@@ -29,13 +115,22 @@ const works = [
             type="button"
             data-gallery-item
             data-gallery-title={work.title}
+            data-gallery-src={work.src}
+            data-gallery-alt={work.alt}
           >
-            <span class="gallery__visual" aria-hidden="true">
-              <span class="gallery__spray"></span>
-              <span class="gallery__tag mono">PLACEHOLDER</span>
+            <span class="gallery__visual">
+              <img
+                src={work.src}
+                alt=""
+                width={work.width}
+                height={work.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="gallery__tag mono">FOTO REAL</span>
             </span>
             <span class="gallery__caption">
-              <span class="mono">PENDIENTE</span>
+              <span class="mono">{work.service}</span>
               <strong>{work.title}</strong>
             </span>
           </button>
@@ -44,7 +139,7 @@ const works = [
     </ul>
 
     <p class="gallery__note mono">
-      TODO: REEMPLAZAR // FOTOS REALES PENDIENTES
+      POLARIZADO + FULL WRAP // FOTOS REALES
     </p>
   </div>
 
@@ -59,8 +154,8 @@ const works = [
         <span aria-hidden="true">x</span>
       </button>
 
-      <div class="lightbox__visual" data-lightbox-visual aria-hidden="true">
-        PLACEHOLDER
+      <div class="lightbox__visual">
+        <img data-lightbox-image alt="" />
       </div>
 
       <h3 id="lightbox-title" data-lightbox-title>Trabajo en proceso</h3>
@@ -118,34 +213,34 @@ const works = [
 
   .gallery__visual {
     position: relative;
-    display: grid;
-    place-items: center;
     flex: 1;
     min-height: 6rem;
-    background:
-      repeating-linear-gradient(
-        125deg,
-        transparent 0 14px,
-        color-mix(in srgb, var(--line) 55%, transparent) 14px 15px
-      ),
-      radial-gradient(circle at 70% 30%, var(--bg-wall), var(--bg));
+    overflow: hidden;
+    background: var(--bg);
   }
 
-  .gallery__spray {
-    position: absolute;
-    width: 55%;
-    height: 55%;
-    border: 1px dashed color-mix(in srgb, var(--neon-cyan) 45%, transparent);
-    transform: rotate(-8deg);
+  .gallery__visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-base) var(--ease-snap);
+  }
+
+  .gallery__button:hover .gallery__visual img {
+    transform: scale(1.04);
   }
 
   .gallery__tag {
-    position: relative;
+    position: absolute;
+    bottom: var(--space-2);
+    left: var(--space-2);
+    z-index: 1;
     padding: var(--space-1) var(--space-2);
     border: 1px solid var(--line-strong);
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    background: color-mix(in srgb, var(--bg) 74%, transparent);
     color: var(--neon-acid);
-    font-size: 0.58rem;
+    font-size: 0.55rem;
   }
 
   .gallery__caption {
@@ -203,6 +298,7 @@ const works = [
     position: absolute;
     top: var(--space-2);
     right: var(--space-2);
+    z-index: 2;
     width: 44px;
     height: 44px;
     border: 1px solid var(--line-strong);
@@ -222,20 +318,19 @@ const works = [
   .lightbox__visual {
     display: grid;
     place-items: center;
-    aspect-ratio: 16 / 9;
+    min-height: 12rem;
+    max-height: 70vh;
     margin-bottom: var(--space-4);
-    border: 1px dashed var(--line-strong);
-    background:
-      repeating-linear-gradient(
-        125deg,
-        transparent 0 18px,
-        color-mix(in srgb, var(--line) 55%, transparent) 18px 19px
-      ),
-      var(--bg);
-    color: var(--neon-acid);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--bg);
+  }
+
+  .lightbox__visual img {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
   }
 
   .lightbox__dialog h3 {
@@ -282,6 +377,12 @@ const works = [
   @media (prefers-reduced-motion: reduce) {
     .lightbox {
       backdrop-filter: none;
+    }
+
+    .gallery__visual img,
+    .gallery__button:hover .gallery__visual img {
+      transition: none;
+      transform: none;
     }
   }
 </style>

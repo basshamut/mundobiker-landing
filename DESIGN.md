@@ -326,7 +326,8 @@ Todos son CSS salvo que se indique. Animar solo `transform` y `opacity` siempre 
 - Línea tipo circuito con nodos que se encienden en secuencia: Cotiza → Diseño → Instalación → Entrega.
 
 **Gallery**
-- Mosaico irregular tipo muro de grafitis. Lightbox con `Esc`, flechas y foco atrapado.
+- Mosaico irregular tipo muro de grafitis con fotos reales de polarizado y full wrap; los demás servicios se suman cuando haya material.
+- Lightbox con `Esc`, flechas, foco atrapado y la imagen completa.
 
 **Loader**
 - Terminal en mono: `INICIALIZANDO SISTEMA...`. Duración ~6.6 s (decisión de esta versión), omitible, con el logo como watermark de fondo y salida garantizada: no depende de `animationend` ni bloquea el contenido si el JS falla o está desactivado.

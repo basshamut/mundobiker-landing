@@ -7,7 +7,7 @@ if (lightbox) {
     document.querySelectorAll<HTMLButtonElement>('[data-gallery-item]'),
   );
   const title = lightbox.querySelector<HTMLElement>('[data-lightbox-title]');
-  const visual = lightbox.querySelector<HTMLElement>('[data-lightbox-visual]');
+  const image = lightbox.querySelector<HTMLImageElement>('[data-lightbox-image]');
   const closeButton = lightbox.querySelector<HTMLButtonElement>(
     '[data-lightbox-close]',
   );
@@ -26,8 +26,20 @@ if (lightbox) {
     if (!item) return;
 
     const itemTitle = item.dataset.galleryTitle ?? 'Trabajo en proceso';
+    const source = item.dataset.gallerySrc;
+    const alt = item.dataset.galleryAlt ?? itemTitle;
+
     if (title) title.textContent = itemTitle;
-    if (visual) visual.textContent = itemTitle;
+
+    if (image) {
+      if (source) {
+        image.src = source;
+        image.alt = alt;
+      } else {
+        image.removeAttribute('src');
+        image.alt = '';
+      }
+    }
 
     items.forEach((element, index) => {
       if (index === currentIndex) {

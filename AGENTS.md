@@ -57,6 +57,7 @@ Antes de dar una tarea por terminada: `npx astro check` y `npm run build` deben 
 │   ├── logo.webp             # logo transparente (principal)
 │   ├── logo.png              # fallback del logo
 │   ├── og-image.jpg
+│   ├── images/services/      # polarizado/ y full-wrap/ (01-05.webp)
 │   └── fonts/               # fuentes autoalojadas (.woff2)
 └── src/
     ├── layouts/
@@ -256,7 +257,7 @@ No las inventes. Pregunta antes de implementarlas:
 
 - Mecanismo de envío del formulario de contacto (WhatsApp prellenado, `mailto:` o servicio externo).
 - Mapa de ubicación (iframe de terceros vs. mapa SVG estático con enlace).
-- Fotos reales de galería; reseñas reales (las actuales son ejemplos marcados).
+- Fotos de los servicios restantes (polarizado y full wrap ya están); reseñas reales (las actuales son ejemplos marcados).
 - Links o handles de Instagram y TikTok.
 - Analytics y medición de conversiones.
 - Dominio canónico definitivo y `PUBLIC_SITE_URL` de producción.

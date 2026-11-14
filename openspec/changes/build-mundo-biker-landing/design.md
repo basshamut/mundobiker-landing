@@ -103,7 +103,7 @@ La sección de contacto muestra dirección y horario desde `business.ts`, más u
 
 ### D11. Placeholders de material visual
 
-La galería usa placeholders generados con CSS/SVG y etiquetas visibles ("PLACEHOLDER", "TODO: reemplazar"). Las reseñas de muestra están marcadas como ejemplos y no se presentan como reseñas reales. El lightbox funciona con esos placeholders para validar la interacción antes de tener fotos reales.
+La galería usa fotos reales de polarizado y full wrap; los servicios sin fotos usan placeholders generados con CSS/SVG y etiquetas visibles ("PLACEHOLDER", "TODO: reemplazar"). Las reseñas de muestra están marcadas como ejemplos y no se presentan como reseñas reales. El lightbox funciona con esas imágenes y placeholders para validar la interacción antes de tener el resto del material.
 
 - **Alternativa:** fotos de stock. Se descarta: el brief pide material propio y no se deben simular trabajos reales.
 - **Consecuencia:** la sección se puede revisar y medir sin bloquear el lanzamiento por assets.

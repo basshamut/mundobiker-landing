@@ -260,6 +260,11 @@ html.no-scroll body {
   overflow: hidden;
 }
 
+html.no-scroll .wa-float {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

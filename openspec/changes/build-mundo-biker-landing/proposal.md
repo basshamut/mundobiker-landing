@@ -16,7 +16,7 @@ Mundo Biker, taller de personalización y estética automotriz en CDMX, no tiene
 - Implementar SEO técnico: `title`, `meta description`, Open Graph, Twitter Card, `robots.txt`, sitemap y JSON-LD `LocalBusiness`.
 - Implementar los efectos cyberpunk con CSS, respetando `prefers-reduced-motion`, el límite de 3 parpadeos por segundo y la reducción de efectos en móvil.
 - Añadir loader, cursor personalizado y modo apagón.
-- Marcar como placeholders la galería y como ejemplos las reseñas de muestra; no inventar identidades reales.
+- Mostrar fotos reales disponibles (polarizado y full wrap), placeholders para el resto y reseñas de muestra marcadas; no inventar identidades reales.
 
 No hay cambios incompatibles: el repositorio solo contiene documentación y OpenSpec, no existe código previo.
 

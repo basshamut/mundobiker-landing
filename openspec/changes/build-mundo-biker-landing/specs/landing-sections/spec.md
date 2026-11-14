@@ -47,14 +47,14 @@ The page SHALL present four ordered steps: Cotiza, Diseño, Instalación and Ent
 - **WHEN** the process section renders
 - **THEN** it shows the four steps in the brief's order
 
-### Requirement: Gallery placeholders
+### Requirement: Gallery content
 
-The gallery SHALL present a mosaic of labeled image placeholders until real photos exist. Each item MUST have an accessible name, and no placeholder may be presented as real client work.
+The gallery SHALL present real work photos for available services and labeled placeholders for services without photos. Each item MUST have an accessible name, and no placeholder may be presented as real client work.
 
-#### Scenario: No invented portfolio
+#### Scenario: Mixed real photos and placeholders
 
-- **WHEN** real gallery photos are unavailable
-- **THEN** the gallery shows visibly marked placeholders, not stock or fabricated work
+- **WHEN** real photos exist for some services but not others
+- **THEN** those photos are shown as real work and the missing services remain clearly labeled placeholders, not stock or fabricated work
 
 ### Requirement: Honest testimonials
 
